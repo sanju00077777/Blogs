@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-background: #0f172a;
+  --color-surface: #1e293b;
+  
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.5s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slide-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-slate-200 font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-surface/50 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+  .premium-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .premium-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .premium-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+  }
+  .premium-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.4);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
