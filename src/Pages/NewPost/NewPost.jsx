@@ -53,7 +53,7 @@ const NewPost = () => {
                 className="w-full max-w-2xl"
             >
                 <Link to="/" className="inline-flex items-center text-primary-400 hover:text-primary-300 font-medium mb-6 transition-colors">
-                    <ArrowLeft size={20} className="mr-2" /> Back Home
+                    <ArrowLeft size={20} className="mr-2" /> Back To Home
                 </Link>
 
                 <div className="glass p-8 md:p-10 rounded-2xl relative z-10">
