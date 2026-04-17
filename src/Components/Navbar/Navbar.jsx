@@ -8,10 +8,17 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
 
+    const isLoggedIn = sessionStorage.getItem("UserID") !== null;
+
+    const handleLogout = () => {
+        sessionStorage.removeItem("UserID");
+        window.location.href = "/";
+    };
+
     const navLinks = [
         { name: "Home", path: "/" },
         { name: "New Post", path: "/NewPost" },
-        { name: "Login", path: "/Login" }
+        ...(isLoggedIn ? [] : [{ name: "Login", path: "/Login" }])
     ];
 
     return (
@@ -42,6 +49,14 @@ function Navbar() {
                             )}
                         </Link>
                     ))}
+                    {isLoggedIn && (
+                        <button
+                            onClick={handleLogout}
+                            className="text-sm font-medium transition-colors hover:text-red-400 font-body relative text-slate-300"
+                        >
+                            Logout
+                        </button>
+                    )}
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -75,6 +90,17 @@ function Navbar() {
                                 {link.name}
                             </Link>
                         ))}
+                        {isLoggedIn && (
+                            <button
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    handleLogout();
+                                }}
+                                className="text-lg font-medium py-2 border-b border-white/5 text-slate-300 text-left"
+                            >
+                                Logout
+                            </button>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>
